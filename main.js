@@ -1,4 +1,4 @@
-//main.js Scissors, Paper, Rock
+//Scissors, Paper, Rock
 
 var newGameBtn = document.getElementById('js-newGameButton');
 newGameBtn.addEventListener('click', newGame);
@@ -62,10 +62,7 @@ function newGame() {
 
     playerNameElem.innerHTML = player.name;
     
-    function setGamePoints() {
-    	playerPointsElem.innerHTML = player.score;
-    	computerPointsElem.innerHTML = computer.score;
-	}
+    setGamePoints();
   }
 }
 function playerPick(playerPick) {
@@ -86,6 +83,10 @@ function playerPick(playerPick) {
 
     playerPickElem.innerHTML = playerPick;
     computerPickElem.innerHTML = computerPick;
+
+    checkRoundWinner(playerPick, computerPick);
+	setGamePoints();
+	winnerGame();
 }
 
 function checkRoundWinner(playerPick, computerPick) {
@@ -110,6 +111,8 @@ function checkRoundWinner(playerPick, computerPick) {
         computerResultElem.innerHTML = "Win!";
         computer.score++;
     }
+    setGamePoints();
+	winnerGame();
 }
 
 function playerPick(playerPick) {
@@ -130,13 +133,13 @@ function winnerGame() {
 	if (player.score == 10) {
 		gameState = 'ended';
 		setGameElements();
-	alert('The winner is: ' + player.name);
+	alert('The winner is ' + player.name + '!');
 	}
 	else if (computer.score == 10) {
 		gameSttae = "ended";
 
 		setGameElements();
 		alert('The computer has won!');
-		console.log('The computer has won');
+		console.log('The computer has won!');
 	}
 }
